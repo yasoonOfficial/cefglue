@@ -1,0 +1,107 @@
+
+body
+{
+    font-family: Arial;
+    font-size: 12pt;
+    
+    margin: 0;
+}
+
+h1
+{
+    font-size: 18pt;
+}
+
+h2
+{
+    font-size: 17pt;
+}
+
+h3
+{
+    font-size: 16pt;
+}
+
+h4
+{
+    font-size: 15pt;
+}
+
+h5
+{
+    font-size: 14pt;
+}
+
+h6
+{
+    font-size: 13pt;
+}
+
+p
+{
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+#header
+{
+    padding: 1em;
+    background: whiteSmoke;
+
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#contentLayout
+{
+    margin: 1em;
+
+    display: -webkit-box;
+}
+
+#navigationPanel
+{
+    margin-right: 0.5em;
+}
+
+#contentPanel
+{
+    margin-left: 0.5em;
+    -webkit-box-flex: 1;
+}
+
+#CefGlueLogo
+{
+    font-family: Arial;
+    font-size: 18pt;
+}
+
+.LinkPanel
+{
+    border: 1px solid #A5A5A5;
+
+    background-image: -webkit-linear-gradient(#E5E5E5, #FFFFFF);
+
+    border-radius: 0.5em;
+    margin: 0.5em 0 0.5em 0;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.LinkPanel > h3
+{
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 0.3em;
+
+    /* border: 1px solid yellow; */
+}
+
+.LinkPanel > ul
+{
+    list-style-type: none;
+
+    margin: 0.3em 0 0.3em 0;
+    padding: 0;
+}

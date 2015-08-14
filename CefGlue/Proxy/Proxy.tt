@@ -1,0 +1,8 @@
+﻿<#@ template language="C#" hostspecific="false" debug="false" #>
+<#@ output extension=".g.cs" #>
+<#@ include file="../Templates/CefGlue.ttinclude" #>
+<#@ include file="../Templates/ProxySchema.g.ttinclude" #>
+<#@ include file="Proxy.ttinclude" #><#
+
+    GenerateProxyClasses();
+#>

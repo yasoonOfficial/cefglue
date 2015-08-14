@@ -1,0 +1,145 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue", "CefGlue\CefGlue.csproj", "{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue.Client", "CefGlue.Client\CefGlue.Client.csproj", "{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue.Windows.Forms", "CefGlue.Windows.Forms\CefGlue.Windows.Forms.csproj", "{432E4102-0457-4123-AD92-301AC6883C1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue.TestShell", "CefGlue.TestShell\CefGlue.TestShell.csproj", "{B97A1DF2-64F0-4D32-8D65-866472621CC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue.UnitTests", "CefGlue.UnitTests\CefGlue.UnitTests.csproj", "{6CCCE690-3982-4474-9F13-32F281F9C40C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue.Gtk", "CefGlue.Gtk\CefGlue.Gtk.csproj", "{C7545EEB-353F-4E64-8060-E8BD9320F412}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefGlue.Demo.Gtk", "CefGlue.Demo.Gtk\CefGlue.Demo.Gtk.csproj", "{19175BFB-D949-4C07-AB1A-84A5161F698C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|linux-x86 = Debug|linux-x86
+		Debug|windows-x86 = Debug|windows-x86
+		Release|linux-x86 = Release|linux-x86
+		Release|windows-x86 = Release|windows-x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Debug|linux-x86.Build.0 = Debug|linux-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Release|linux-x86.Build.0 = Release|linux-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Release|windows-x86.ActiveCfg = Release|windows-x86
+		{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}.Release|windows-x86.Build.0 = Release|windows-x86
+		{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}.Release|windows-x86.ActiveCfg = Release|windows-x86
+		{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}.Release|windows-x86.Build.0 = Release|windows-x86
+		{432E4102-0457-4123-AD92-301AC6883C1B}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{432E4102-0457-4123-AD92-301AC6883C1B}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{432E4102-0457-4123-AD92-301AC6883C1B}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{432E4102-0457-4123-AD92-301AC6883C1B}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{432E4102-0457-4123-AD92-301AC6883C1B}.Release|windows-x86.ActiveCfg = Release|windows-x86
+		{432E4102-0457-4123-AD92-301AC6883C1B}.Release|windows-x86.Build.0 = Release|windows-x86
+		{B97A1DF2-64F0-4D32-8D65-866472621CC6}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{B97A1DF2-64F0-4D32-8D65-866472621CC6}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{B97A1DF2-64F0-4D32-8D65-866472621CC6}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{B97A1DF2-64F0-4D32-8D65-866472621CC6}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{B97A1DF2-64F0-4D32-8D65-866472621CC6}.Release|windows-x86.ActiveCfg = Release|windows-x86
+		{B97A1DF2-64F0-4D32-8D65-866472621CC6}.Release|windows-x86.Build.0 = Release|windows-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Debug|linux-x86.Build.0 = Debug|linux-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Release|linux-x86.Build.0 = Release|linux-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Release|windows-x86.ActiveCfg = Release|windows-x86
+		{6CCCE690-3982-4474-9F13-32F281F9C40C}.Release|windows-x86.Build.0 = Release|windows-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Debug|linux-x86.Build.0 = Debug|linux-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Release|linux-x86.Build.0 = Release|linux-x86
+		{C7545EEB-353F-4E64-8060-E8BD9320F412}.Release|windows-x86.ActiveCfg = Release|windows-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Debug|linux-x86.ActiveCfg = Debug|linux-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Debug|linux-x86.Build.0 = Debug|linux-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Debug|windows-x86.ActiveCfg = Debug|windows-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Debug|windows-x86.Build.0 = Debug|windows-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Release|linux-x86.ActiveCfg = Release|linux-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Release|linux-x86.Build.0 = Release|linux-x86
+		{19175BFB-D949-4C07-AB1A-84A5161F698C}.Release|windows-x86.ActiveCfg = Release|windows-x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = CefGlue.UnitTests\CefGlue.UnitTests.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = MSBuild
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.inheritsSet = null
+		$4.scope = application/t4-template
+		$0.TextStylePolicy = $5
+		$5.FileWidth = 120
+		$5.NoTabsAfterNonTabs = True
+		$5.RemoveTrailingWhitespace = True
+		$5.EolMarker = Unix
+		$5.inheritsSet = VisualStudio
+		$5.inheritsScope = text/plain
+		$5.scope = text/plain
+		$0.TextStylePolicy = $6
+		$6.inheritsSet = null
+		$6.scope = text/html
+		$0.StandardHeader = $7
+		$7.Text = 
+		$7.IncludeInNewFiles = False
+		$0.VersionControlPolicy = $8
+		$8.inheritsSet = Mono
+		$0.ChangeLogPolicy = $9
+		$9.UpdateMode = None
+		$9.MessageStyle = $10
+		$10.LineAlign = 0
+		$9.inheritsSet = Mono
+		$0.TextStylePolicy = $11
+		$11.inheritsSet = null
+		$11.scope = application/javascript
+		$0.TextStylePolicy = $12
+		$12.inheritsSet = null
+		$12.scope = text/microsoft-resx
+		$0.XmlFormattingPolicy = $13
+		$13.inheritsSet = null
+		$13.scope = text/microsoft-resx
+		$0.TextStylePolicy = $14
+		$14.inheritsSet = null
+		$14.scope = application/xml
+		$0.XmlFormattingPolicy = $15
+		$15.inheritsSet = Mono
+		$15.inheritsScope = application/xml
+		$15.scope = application/xml
+		$0.TextStylePolicy = $16
+		$16.inheritsSet = null
+		$16.scope = application/config+xml
+		$0.XmlFormattingPolicy = $17
+		$17.inheritsSet = null
+		$17.scope = application/config+xml
+		$0.TextStylePolicy = $18
+		$18.inheritsSet = null
+		$18.scope = text/cache-manifest
+		$0.TextStylePolicy = $19
+		$19.inheritsSet = null
+		$19.scope = text/css
+		version = 0.5.0
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C2C2C0D-CB79-418E-8CC7-5DEE9B2C12E2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CefGlue.Client</RootNamespace>
+    <AssemblyName>CefGlue.Client</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ReleaseVersion>0.5.0</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CefGlue.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|windows-x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\windows-x86\debug</OutputPath>
+    <DefineConstants>DEBUG;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile />
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|windows-x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\windows-x86\release</OutputPath>
+    <DefineConstants>WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile />
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|linux-x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\linux-x86\debug</OutputPath>
+    <DefineConstants>DEBUG;LINUX</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile />
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|linux-x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\linux-x86\release</OutputPath>
+    <DefineConstants>LINUX</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile />
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CefGlue.AssemblyInfo.cs">
+      <Link>Properties\CefGlue.AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CefGlue.Version.cs">
+      <Link>Properties\CefGlue.Version.cs</Link>
+    </Compile>
+    <Compile Include="AboutForm\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AboutForm\IAboutFormController.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="ClientSchemeHandler.cs" />
+    <Compile Include="ClientSchemeHandlerFactory.cs" />
+    <Compile Include="BrowserSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowserSettingsForm.Designer.cs">
+      <DependentUpon>BrowserSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventConsoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventConsoleForm.Designer.cs">
+      <DependentUpon>EventConsoleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\ScriptableObject\TestObject1.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="TestScriptableObject.cs" />
+    <Compile Include="ClientV8Handler.cs" />
+    <Compile Include="ConsoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsoleForm.Designer.cs">
+      <DependentUpon>ConsoleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToolStripSpringTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="AboutForm\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsoleForm.resx">
+      <DependentUpon>ConsoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowserSettingsForm.resx">
+      <DependentUpon>BrowserSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventConsoleForm.resx">
+      <DependentUpon>EventConsoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="..\CefGlue.snk">
+      <Link>Properties\CefGlue.snk</Link>
+    </None>
+    <None Include="App.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CefGlue.Windows.Forms\CefGlue.Windows.Forms.csproj">
+      <Project>{432E4102-0457-4123-AD92-301AC6883C1B}</Project>
+      <Name>CefGlue.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CefGlue\CefGlue.csproj">
+      <Project>{1C0D2EE0-FB5F-4A4F-8C4F-A3B47FF0839A}</Project>
+      <Name>CefGlue</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue_arrow_left_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue_arrow_right_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\lib\jasmine-1.1.0.rc1\MIT.LICENSE" />
+    <None Include="Resources\close_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\css\site.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\ExtensionDump.html" />
+    <EmbeddedResource Include="Resources\client\ExtensionPerformance.html" />
+    <EmbeddedResource Include="Resources\client\lib\jasmine-1.1.0.rc1\jasmine-html.js" />
+    <EmbeddedResource Include="Resources\client\lib\jasmine-1.1.0.rc1\jasmine.css" />
+    <EmbeddedResource Include="Resources\client\lib\jasmine-1.1.0.rc1\jasmine.js" />
+    <EmbeddedResource Include="Resources\client\lib\jasmine-1.1.0.rc1\jasmine_favicon.png" />
+    <EmbeddedResource Include="Resources\client\JSBindingPerformance.html" />
+    <EmbeddedResource Include="Resources\client\SpecRunner.html" />
+    <EmbeddedResource Include="Resources\client\spec\JSBindingSpec.js" />
+    <EmbeddedResource Include="Resources\client\spec\SpecHelper.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\about.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\img\new-chromium-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\client\eventFlowTest.html" />
+  </ItemGroup>
+  <Import Project="..\CefGlue.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!--
+  <Target Name="BeforeBuild">
+  </Target>
+  -->
+  <!--
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

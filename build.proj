@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="./Common.targets" />
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+
+		<!-- set default platform -->
+		<Platform Condition=" $(CefGlueWindows) and '$(Platform)' == '' ">windows-x86</Platform>
+		<Platform Condition=" $(CefGlueLinux)   and '$(Platform)' == '' ">linux-x86</Platform>
+		<Platform Condition=" $(CefGlueMacOSX)  and '$(Platform)' == '' ">macosx-x86</Platform>
+
+		<AssemblyName>build</AssemblyName>
+		<ProjectGuid>{39ae3d30-843f-4311-8718-fda63bd172cd}</ProjectGuid>
+	</PropertyGroup>
+	<Import Project="./CefGlue.targets" />
+	<PropertyGroup>
+		<ChromiumEmbeddedPath>$(CefGlueRootPath)/third_party/chromiumembedded/</ChromiumEmbeddedPath>
+		<InteropIntermediateOutputPath>$(CefGlueObjPath)/interop/</InteropIntermediateOutputPath>
+	</PropertyGroup>
+
+	<Target Name="Build" DependsOnTargets="BuildInterop;BuildCore;BuildDecorator;BuildRemains;BuildBin">
+	</Target>
+
+	<!-- Build CefGlue Interop Files -->
+	<Target Name="BuildInterop">
+		<!-- execute CEF translator tool -->
+		<MakeDir Directories="$(InteropIntermediateOutputPath)" />
+		<Exec Command="&quot;$(Python)&quot; &quot;$(ChromiumEmbeddedPath)/tools/translator.py&quot; --no-backup --cpp-header-dir &quot;$(ChromiumEmbeddedPath)/include&quot; --cefglue-dir=&quot;.&quot;"
+			WorkingDirectory="$(InteropIntermediateOutputPath)"
+			/>
+
+		<!-- copy generated files to source code base -->
+		<Copy SourceFiles="$(InteropIntermediateOutputPath)/NativeMethods.g.cs"
+			DestinationFolder="$(CefGlueRootPath)/CefGlue/Interop/"
+			SkipUnchangedFiles="true" />
+
+		<Copy SourceFiles="$(InteropIntermediateOutputPath)/HandlerSchema.g.ttinclude"
+			DestinationFolder="$(CefGlueRootPath)/CefGlue/Templates/"
+			SkipUnchangedFiles="true" />
+
+		<Copy SourceFiles="$(InteropIntermediateOutputPath)/ProxySchema.g.ttinclude"
+			DestinationFolder="$(CefGlueRootPath)/CefGlue/Templates/"
+			SkipUnchangedFiles="true" />
+
+		<!-- apply T4 templates -->
+		<Exec Command="$(CefGlueTextTransformExe) -o alloc alloc.tt " WorkingDirectory="$(CefGlueRootPath)/CefGlue/Interop/" />
+
+		<Exec Command="$(CefGlueTextTransformExe) -o Handler Handler.tt " WorkingDirectory="$(CefGlueRootPath)/CefGlue/Handler/" />
+		<Exec Command="$(CefGlueTextTransformExe) -o Proxy Proxy.tt " WorkingDirectory="$(CefGlueRootPath)/CefGlue/Proxy/" />
+	</Target>
+
+	<!-- Build CefGlue Core -->
+	<Target Name="BuildCore" DependsOnTargets="BuildInterop">
+		<MSBuild Projects="$(CefGlueRootPath)/CefGlue/CefGlue.csproj"
+			Targets="Build"
+			Properties="Configuration=$(Configuration);Platform=$(Platform)"
+			/>
+	</Target>
+
+	<!-- Build CefGlue WebBrowser Decorators -->
+	<Target Name="BuildDecorator" DependsOnTargets="BuildCore">
+		<!-- Get CefGlue project target path -->
+		<MSBuild Projects="$(CefGlueRootPath)/CefGlue/CefGlue.csproj"
+			Targets="GetTargetPath"
+			Properties="Configuration=$(Configuration);Platform=$(Platform)">
+			<Output TaskParameter="TargetOutputs" ItemName="_CefGlueTargetPath" />
+		</MSBuild>
+		<CreateProperty Value="%(_CefGlueTargetPath.FullPath)">
+			<Output TaskParameter="Value" PropertyName="CefGlueTargetPath" />
+		</CreateProperty>
+
+		<!-- CefGlue.Windows.Forms -->
+		<Exec Command="$(CefGlueTextTransformExe) -r=&quot;$(CefGlueTargetPath)&quot; -o CefWebBrowser CefWebBrowser.tt "
+			WorkingDirectory="$(CefGlueRootPath)/CefGlue.Windows.Forms/" />
+		<Exec Command="$(CefGlueTextTransformExe) -r=&quot;$(CefGlueTargetPath)&quot; -o CefWebView CefWebView.tt "
+			WorkingDirectory="$(CefGlueRootPath)/CefGlue.Windows.Forms/" />
+
+		<!-- ... -->
+	</Target>
+
+	<!-- Build CefGlue -->
+	<Target Name="BuildRemains" DependsOnTargets="BuildDecorator">
+		<MSBuild Projects="CefGlue.sln"
+			Targets="Build" 
+			Properties="Configuration=$(Configuration);Platform=$(Platform)"
+		/>
+	</Target>
+
+	<Target Name="BuildBin" DependsOnTargets="BuildRemains">
+		<!-- Get CefGlue project target path -->
+		<MSBuild Projects="$(CefGlueRootPath)/CefGlue/CefGlue.csproj"
+			Targets="GetTargetPath"
+			Properties="Configuration=$(Configuration);Platform=$(Platform)">
+			<Output TaskParameter="TargetOutputs" ItemName="_CefGlueTargetPath" />
+		</MSBuild>
+		<CreateProperty Value="%(_CefGlueTargetPath.FullPath)">
+			<Output TaskParameter="Value" PropertyName="CefGlueTargetPath" />
+		</CreateProperty>
+
+		<!-- Get CefGlue.Windows.Forms project target path -->
+		<MSBuild Projects="$(CefGlueRootPath)/CefGlue.Windows.Forms/CefGlue.Windows.Forms.csproj"
+			Targets="GetTargetPath"
+			Properties="Configuration=$(Configuration);Platform=$(Platform)">
+			<Output TaskParameter="TargetOutputs" ItemName="_CefGlueWindowsFormsTargetPath" />
+		</MSBuild>
+		<CreateProperty Value="%(_CefGlueWindowsFormsTargetPath.FullPath)">
+			<Output TaskParameter="Value" PropertyName="CefGlueWindowsFormsTargetPath" />
+		</CreateProperty>
+
+		<!-- Get CefGlue.Client project target path -->
+		<MSBuild Projects="$(CefGlueRootPath)/CefGlue.Client/CefGlue.Client.csproj"
+			Targets="GetTargetPath"
+			Properties="Configuration=$(Configuration);Platform=$(Platform)">
+			<Output TaskParameter="TargetOutputs" ItemName="_CefGlueClientTargetPath" />
+		</MSBuild>
+		<CreateProperty Value="%(_CefGlueClientTargetPath.FullPath)">
+			<Output TaskParameter="Value" PropertyName="CefGlueClientTargetPath" />
+		</CreateProperty>
+
+		<Copy SourceFiles="$(CefGlueTargetPath);$(CefGlueTargetPath).config"
+			DestinationFolder="$(CefGlueBinPath)/$(CefGlueConfigName)"
+			SkipUnchangedFiles="true" />
+
+		<Copy SourceFiles="$(CefGlueWindowsFormsTargetPath)"
+			DestinationFolder="$(CefGlueBinPath)/$(CefGlueConfigName)"
+			SkipUnchangedFiles="true" />
+
+		<Copy SourceFiles="$(CefGlueClientTargetPath);$(CefGlueClientTargetPath).config"
+			DestinationFolder="$(CefGlueBinPath)/$(CefGlueConfigName)"
+			SkipUnchangedFiles="true" />
+			
+
+	</Target>
+
+</Project>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>CefGlue Project</title>
+    <!-- link rel="stylesheet" type="text/css" href="css/site.css" -->
+</head>
+<body>
+Hello!
+<script>
+	console.log("Script executing.");
+	setTimeout(function () { console.log("setTimeout(..., 0) fired."); }, 0);
+	document.body.onload = function () {
+		console.log("document.body.onload fired.");
+		setTimeout(function () { console.log("setTimeout(..., 0) from onload fired."); }, 0);
+	}
+</script>
+</body>
+</html>

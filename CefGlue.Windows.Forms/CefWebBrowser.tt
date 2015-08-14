@@ -1,0 +1,12 @@
+﻿<#@ template language="C#" hostspecific="false" debug="false" #>
+<#@ include file="../CefGlue/Templates/WebBrowserDecorator.ttinclude" #>
+<#@ output extension=".g.cs" #><#
+
+    this.Schema.NamespaceName = "CefGlue.Windows.Forms";
+    this.Schema.ClassName = "CefWebBrowser";
+    this.Schema.CoreMemberName = "core";
+    this.Schema.SetExplicit("Created");
+    this.Schema.AddAlias("Created", "BrowserCreated");
+
+    GenerateWebBrowserDecorator();
+#>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>CefGlue Project</title>
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+</head>
+<body>
+Hello!
+<script>
+	cefGlue.client.log("Script executing.");
+	setTimeout(function () { cefGlue.client.log("setTimeout(..., 0) fired."); }, 0);
+	document.body.onload = function () {
+		cefGlue.client.log("document.body.onload fired.");
+		setTimeout(function () { cefGlue.client.log("setTimeout(..., 0) from onload fired."); }, 0);
+	}
+</script>
+</body>
+</html>

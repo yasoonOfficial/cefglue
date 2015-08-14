@@ -1,0 +1,28 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JavaScript Extension: Dump</title>
+    </head>
+    <body>
+        <h1>JavaScript Extension: Dump</h1>
+
+        <pre><script type="text/javascript">
+            function runTestScript(script) {
+                document.writeln("<span style='color:blue; font-weight:bold'>&gt;</span> " + script);
+                try {
+                    document.writeln("<span style='color:blue; font-weight:bold'>&lt;</span> " + eval(script));
+                }
+                catch (e) {
+                    document.writeln("<span style='color:red; font-weight:bold'>!</span> <span style='color:red'>" + e.toString() + "</span>");
+                }
+                document.writeln();
+            }
+
+            runTestScript("cefGlue.client.dump(undefined, null, false, 0, 1.5, new Date(), 'Hello, World!', {a:1, b: {c:2, d:3}, e:3}, [1,2,[3,4,5]], function(){});");
+
+            runTestScript("cefGlue.client.dump(cefGlue);");
+
+        </script></pre>
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>CefGlue Project</title>
+
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+
+    <style>
+        body
+        {
+            background: url(./img/new-chromium-logo.png);
+            background-repeat: no-repeat;
+
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="header" style="background:rgba(245, 245, 245, 0.5);">
+    <span id="CefGlueLogo">CefGlue Project</span>
+</div>
+
+<div id="contentLayout" style="-webkit-box-pack:end">
+
+<div style="background:rgba(245, 245, 245, 0.7); padding:.5em 1em; border-top: 1px solid #E5E5E5; border-bottom: 1px solid #E5E5E5; font-family: segoe ui, tahoma; font-size:10pt">
+    <p>Version <span id="VersionLabel">unknown</span></p>
+    <p>Copyright &copy; 2011 <a href="https://bitbucket.org/fddima/cefglue" target="_blank" onclick="return view._openUrl(this.href);">CefGlue Project</a></p>
+    <p>Built on <a href="http://code.google.com/p/chromiumembedded/" target="_blank" onclick="return view._openUrl(this.href);">Chromium Embedded Framework</a></p>
+    <br />
+    <br />
+    <br />
+</div>
+
+</div>
+
+<div id="buttonPane" style="display:-webkit-box; -webkit-box-pack:end; position:absolute; bottom:0; left:0; width:100%">
+	<button style="min-width:75px; margin:10px" onclick="controller.closeView();">OK</button>
+</div>
+
+<script>
+    if (window.controller) {
+        document.getElementById("VersionLabel").innerText = controller.cefGlueVersion;
+    }
+    window.view = {
+        _openUrl: function(url) {
+        	controller.openUrl(url);
+        	return false;
+        }
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Window Location</title>
+</head>
+<body>
+	<script>console.log("before iframe");</script>
+	<iframe src="subframe.html"></iframe>
+	<iframe src="subframe_not_exist.html"></iframe>
+	<iframe src="subframe.html"></iframe>
+	<script>console.log("after iframe");</script>
+	<script>
+		window.location = "subframe_loading.html";
+		/*
+		var frame2 = document.getElementsByTagName("iframe")[1];
+		frame2.parentElement.removeChild(frame2);
+
+		setTimeout(function(){
+			var frame4 = document.createElement("iframe");
+			frame4.src="subframe.html";
+			document.body.appendChild(frame4);
+	    },0);
+        */
+	</script>
+</body>
+</html>

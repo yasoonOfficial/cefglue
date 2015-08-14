@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>XMLHttpRequest Test</title>
+</head>
+<body>
+<script>
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function(){
+		console.log("xhr-onload");
+	}
+	xhr.addEventListener("error", function(){console.log("xhr-onerror2");}, false);
+	xhr.onerror = function(a,b,c){
+		console.log("xhr-onerror", this, a, b, c); throw "qwe";
+	}
+    xhr.addEventListener("error", function(){console.log("xhr-onerror3");}, true);
+    xhr.onerror = function(a,b,c){
+		console.log("xhr-onerror-XXX", this, a, b, c); throw "qwe";
+	}
+	xhr.onreadystatechange = function(a,b,c) {
+		console.log("xhr-onreadystatechange",this,a,b,c);
+	}
+	xhr.open("GET", "res://client/index.html", true);
+	xhr.send(null);
+</script>
+</body>
+</html>

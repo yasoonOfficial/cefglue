@@ -1,0 +1,4 @@
+#file load_event.html
+#ready all
+ConsoleMessage:onload
+Ready:

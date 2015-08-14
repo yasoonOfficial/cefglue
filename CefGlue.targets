@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0"
+	xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="Common.targets" />
+	<Import Project="Configure.targets" />
+
+	<PropertyGroup>
+		<CefGlueRootPath>$(MSBuildThisFileDirectory)</CefGlueRootPath>
+		<CefGlueObjPath>$(CefGlueRootPath)\obj\</CefGlueObjPath>
+		<CefGlueBinPath>$(CefGlueRootPath)\bin\</CefGlueBinPath>
+
+		<!-- Windows -->
+		<CefGlueWindows Condition=" '$(CefGlueWindows)' == '' and '$(OS)' == 'Windows_NT' ">true</CefGlueWindows>
+		<CefGlueWindows Condition=" '$(CefGlueWindows)'!='true' ">false</CefGlueWindows>
+
+		<!-- Unix -->
+		<CefGlueUnix Condition=" '$(CefGlueUnix)' == '' and '$(OS)' == 'Unix' ">true</CefGlueUnix>
+		<CefGlueUnix Condition=" '$(CefGlueUnix)' != 'true' ">false</CefGlueUnix>
+		<CefGlueLinux>$(CefGlueUnix)</CefGlueLinux>
+
+		<!-- MacOSX -->
+		<CefGlueMacOSX Condition=" '$(CefGlueMacOSX)' == '' and '$(OS)' == 'OSX' ">true</CefGlueMacOSX>
+		<CefGlueMacOSX Condition=" '$(CefGlueMacOSX)' != 'true' ">false</CefGlueMacOSX>
+
+		<!-- Posix -->
+		<Posix Condition=" $(CefGlueUnix) or $(CefGlueMacOSX) ">true</Posix>
+		<Posix Condition=" $(Posix) != 'true' ">false</Posix>
+
+		<!-- MONO -->
+		<CefGlueMono Condition=" '$(CefGlueMono)' == '' and !$(CefGlueWindows) ">true</CefGlueMono>
+		<CefGlueMono Condition=" '$(CefGlueMono)' != 'true' ">false</CefGlueMono>
+
+		<!-- .NET -->
+		<CefGlueNet Condition=" !$(CefGlueMono) ">true</CefGlueNet>
+		<CefGlueNet Condition=" '$(CefGlueNet)' != 'true' ">false</CefGlueNet>
+
+		<!-- Target Framework Version -->
+		<TargetFrameworkVersion Condition=" $(TargetFrameworkVersion) == '' ">v4.0</TargetFrameworkVersion>
+
+		<!-- Mono doesn't support Client profile -->
+		<TargetFrameworkProfile Condition=" $(CefGlueMono) and $(TargetFrameworkProfile) == 'Client' "></TargetFrameworkProfile>
+
+		<!-- create configuration name -->
+		<CefGlueConfigName></CefGlueConfigName>
+
+		<CefGlueConfigName Condition=" '$(Configuration)' == 'Release' ">$(CefGlueConfigName)release</CefGlueConfigName>
+		<CefGlueConfigName Condition=" '$(Configuration)' == 'Debug' ">$(CefGlueConfigName)debug</CefGlueConfigName>
+		<CefGlueConfigName Condition=" '$(Configuration)' != 'Release' and '$(Configuration)' != 'Debug' ">$(CefGlueConfigName)$(Configuration)</CefGlueConfigName>
+
+		<CefGlueConfigName Condition=" '$(Platform)' == 'x86' ">$(CefGlueConfigName)-x86</CefGlueConfigName>
+		<CefGlueConfigName Condition=" '$(Platform)' == 'x64' ">$(CefGlueConfigName)-x64</CefGlueConfigName>
+		<CefGlueConfigName Condition=" '$(Platform)' == 'AnyCPU' ">$(CefGlueConfigName)-anycpu</CefGlueConfigName>
+		<CefGlueConfigName Condition=" '$(Platform)' != 'x86' and '$(Platform)' != 'x64' and '$(Platform)' != 'AnyCPU' ">$(CefGlueConfigName)-$(Platform)</CefGlueConfigName>
+
+		<!-- set paths -->
+		<!--
+		<BaseIntermediateOutputPath>$(CefGlueObjPath)\$(CefGlueConfigName)\</BaseIntermediateOutputPath>
+		<IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(AssemblyName)\</IntermediateOutputPath>
+		<OutputPath>$(CefGlueBinPath)\$(CefGlueConfigName)\</OutputPath>
+		<DocumentationFile Condition=" '$(DocumentationFile)' != '' ">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+		-->
+
+		<!-- define compiler constants -->
+		<DefineConstants Condition=" $(CefGlueMono) ">$(DefineConstants);MONO</DefineConstants>
+		<DefineConstants Condition=" $(CefGlueNet) ">$(DefineConstants);NET</DefineConstants>
+
+		<DefineConstants Condition=" $(CefGlueWindows) ">$(DefineConstants);WINDOWS</DefineConstants>
+		<DefineConstants Condition=" $(CefGlueMacOSX) ">$(DefineConstants);MACOSX</DefineConstants>
+		<DefineConstants Condition=" $(Posix) ">$(DefineConstants);POSIX</DefineConstants>
+		<DefineConstants Condition=" $(CefGlueUnix) ">$(DefineConstants);UNIX;LINUX</DefineConstants>
+
+		<DefineConstants Condition=" '$(Platform)' == 'x86' ">$(DefineConstants);ARCH_X86;INTPTR32</DefineConstants>
+		<DefineConstants Condition=" '$(Platform)' == 'x64' ">$(DefineConstants);ARCH_X64;INTPTR64</DefineConstants>
+		<DefineConstants Condition=" '$(Platform)' == 'AnyCPU' ">$(DefineConstants);ARCH_ANYCPU</DefineConstants>
+
+		<!-- TODO: obsolete -->
+		<CefGlueDiagnostics>false</CefGlueDiagnostics>
+
+		<DefineConstants Condition=" $(CefGlueDiagnostics) ">$(DefineConstants);DIAGNOSTICS</DefineConstants>
+
+		<!-- Tools -->
+		<!-- T4 TextTransform tool -->
+		<CefGlueTextTransformExe>"$(CefGlueRootPath)\third_party\Mono.TextTemplating\TextTransform.exe"</CefGlueTextTransformExe>
+		<!-- Use 32-bit version of TextTransform on Windows (x64) -->
+		<CefGlueTextTransformExe Condition=" $(CefGlueWindows) and '$(Platform)' == 'windows-x86' ">"$(CefGlueRootPath)\third_party\Mono.TextTemplating\TextTransform-x86.exe"</CefGlueTextTransformExe>
+
+		<!-- Python -->
+		<Python Condition=" '$(Python)' == '' and $(CefGlueWindows) and Exists('c:/python26/python.exe') ">c:/python26/python.exe</Python>
+		<Python Condition=" '$(Python)' == '' and $(CefGlueWindows) and Exists('c:/python27/python.exe') ">c:/python27/python.exe</Python>
+		<Python Condition=" '$(Python)' == '' ">python</Python>
+	</PropertyGroup>
+
+</Project>
