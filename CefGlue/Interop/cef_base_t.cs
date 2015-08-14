@@ -13,7 +13,7 @@ namespace CefGlue.Interop
         /// <summary>
         /// Size of the data structure.
         /// </summary>
-        public int size;
+        public IntPtr size;
 
         /// <summary>
         /// Increment the reference count.

@@ -17,7 +17,7 @@ namespace CefGlue.Interop
         // Size of this structure.
         ///
         // size_t size;
-        public int size;
+        public IntPtr size;
 
         ///
         // Set to true (1) to have the message loop run in a separate thread. If

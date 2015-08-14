@@ -68,11 +68,11 @@ namespace CefGlue.Interop
 #>
     internal unsafe partial struct <#=def.Name#>
     {
-        private static int s_size;
+        private static IntPtr s_size;
 
         static <#=def.Name#>()
         {
-            s_size = Marshal.SizeOf(typeof(<#=def.Name#>));
+            s_size = (IntPtr) Marshal.SizeOf(typeof(<#=def.Name#>));
         }
 
         internal static <#=def.Name#>* Alloc()

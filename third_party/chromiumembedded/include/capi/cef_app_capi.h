@@ -105,7 +105,9 @@ typedef struct _cef_app_t {
 
   ///
   // Provides an opportunity to register custom schemes. Do not keep a reference
-  // to the |registrar| object. This function is called on the UI thread.
+  // to the |registrar| object. This function is called on the main thread for
+  // each process and the registered schemes should be the same across all
+  // processes.
   ///
   void (CEF_CALLBACK *on_register_custom_schemes)(struct _cef_app_t* self,
       struct _cef_scheme_registrar_t* registrar);

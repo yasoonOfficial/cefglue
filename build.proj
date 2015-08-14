@@ -5,7 +5,7 @@
 		<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
 
 		<!-- set default platform -->
-		<Platform Condition=" $(CefGlueWindows) and '$(Platform)' == '' ">windows-x86</Platform>
+		<Platform Condition=" $(CefGlueWindows) and '$(Platform)' == '' ">AnyCPU</Platform>
 		<Platform Condition=" $(CefGlueLinux)   and '$(Platform)' == '' ">linux-x86</Platform>
 		<Platform Condition=" $(CefGlueMacOSX)  and '$(Platform)' == '' ">macosx-x86</Platform>
 

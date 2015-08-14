@@ -17,7 +17,7 @@ namespace CefGlue.Interop
         /// <summary>
         /// Size of this structure.
         /// </summary>
-        public int size;
+        public IntPtr size;
 
         ///
         // Disable drag & drop of URLs from other windows.
