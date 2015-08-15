@@ -14,10 +14,10 @@
             ThrowIfObjectDisposed();
 			string m_url = cef_string_t.ToString(url);
 			CefProxyInfo m_info = CefProxyInfo.From(proxy_info);
-			GetProxyForUrl(this, m_url, m_info);
+			GetProxyForUrl(m_url, m_info);
         }
 
-		protected virtual void GetProxyForUrl(CefProxyHandler handler, string url, CefProxyInfo proxyInfo)
+		protected virtual void GetProxyForUrl(string url, CefProxyInfo proxyInfo)
 		{
 		} 
     }
