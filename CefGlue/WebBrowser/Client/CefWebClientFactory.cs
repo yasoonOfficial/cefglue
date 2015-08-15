@@ -10,9 +10,20 @@
     {
         private static Lazy<CefWebClientFactory> defaultFactory = new Lazy<CefWebClientFactory>(LazyThreadSafetyMode.PublicationOnly);
 
+		private static CefWebClientFactory _default;
         public static CefWebClientFactory Default
         {
-            get { return defaultFactory.Value; }
+            get 
+			{
+				if (_default == null)
+					_default = defaultFactory.Value;
+				
+				return _default;
+			}
+			set
+			{
+				_default = value;
+			}
         }
 
         public virtual CefWebClient Create(CefWebBrowserCore context)
