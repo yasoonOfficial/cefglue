@@ -2,6 +2,7 @@
 {
     using System;
     using CefGlue.Interop;
+	using CefGlue.Struct;
 
     unsafe partial class CefProxyHandler
     {
@@ -11,9 +12,13 @@
         private void get_proxy_for_url(cef_proxy_handler_t* self, /*const*/ cef_string_t* url, cef_proxy_info_t* proxy_info)
         {
             ThrowIfObjectDisposed();
-            // TODO: CefProxyHandler.get_proxy_for_url
-            throw new NotImplementedException();
+			string m_url = cef_string_t.ToString(url);
+			CefProxyInfo m_info = CefProxyInfo.From(proxy_info);
+			GetProxyForUrl(this, m_url, m_info);
         }
 
+		protected virtual void GetProxyForUrl(CefProxyHandler handler, string url, CefProxyInfo proxyInfo)
+		{
+		} 
     }
 }

@@ -145,6 +145,7 @@
     <Compile Include="Base\ResourceHelper.cs" />
     <Compile Include="Cef.cs" />
     <Compile Include="Enum\CefHandlerFocusSource.cs" />
+    <Compile Include="Enum\CefProxyType.cs" />
     <Compile Include="Enum\CefStorageType.cs" />
     <Compile Include="Handler\CefProxyHandler.Impl.cs" />
     <Compile Include="Handler\CefResourceBundleHandler.Impl.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Proxy\CefV8StackFrame.Impl.cs" />
     <Compile Include="Struct\CefMenuInfo.cs" />
     <Compile Include="Struct\CefKeyInfo.cs" />
+    <Compile Include="Struct\CefProxyInfo.cs" />
     <Compile Include="Threading\CefActionTask.cs" />
     <Compile Include="Threading\CefSendOrPostCallbackTask.cs" />
     <Compile Include="Threading\CefThread.cs" />
